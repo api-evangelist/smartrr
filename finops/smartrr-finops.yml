@@ -1,0 +1,88 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Smartrr
+providerId: smartrr
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- Subscriptions
+- Loyalty
+- Shopify
+- Ecommerce
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Smartrr spend. Smartrr is billed as a Shopify subscription app,
+  not per API request - the Vendor API is included with a Smartrr subscription
+  at no additional API fee. Cost is driven by two components: a fixed monthly
+  base fee tied to the plan tier (Launch $99, Grow $299, Excel from $499) and a
+  usage fee of 1% of subscriber GMV (the gross merchandise value of all orders
+  attached to a subscription). Smartrr markets a no-transaction-fee guarantee,
+  so there is no additional per-order fee beyond the 1% of subscriber GMV.
+  Larger merchants can negotiate flat-fee annual contracts with volume
+  discounts. Because the dominant variable cost scales with subscriber GMV,
+  spend grows with subscription revenue rather than with API call volume.
+notes: >-
+  Per-tier base fees and the 1% subscriber GMV rate are not reconciled here;
+  verify current numbers on https://smartrr.com/pricing. The relevant cost
+  drivers are the plan tier and subscriber GMV, not API request counts.
+sources:
+- https://smartrr.com/pricing
+- https://support.smartrr.com/hc/en-us/articles/38949730932753-Plans
+- https://apps.shopify.com/smartrr
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Smartrr
+serviceCategory: Ecommerce and Subscription Management
+billingModel:
+  pricingCategory: Subscription plus Usage
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Smartrr Subscription Platform
+  ServiceCategory: Ecommerce and Subscription Management
+  ProviderName: Smartrr
+  PublisherName: Smartrr
+  InvoiceIssuerName: Smartrr
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription plus Usage
+meters:
+- name: monthly_base_fee
+  description: Fixed monthly plan fee tied to the Smartrr tier (Launch / Grow / Excel).
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: subscriber_gmv_fee
+  description: Usage fee of 1% of subscriber GMV - gross merchandise value of all orders attached to a subscription.
+  unit: gmv
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+principles:
+- name: Visibility
+  description: Track subscriber GMV monthly, since the 1% usage fee scales directly with it; watch the plan tier's fixed base fee separately.
+- name: Allocation
+  description: Attribute the base fee and GMV fee to the ecommerce/retention team that owns the subscription program.
+- name: Optimization
+  description: Right-size the plan tier to the feature set actually used, and negotiate a flat-fee annual contract once subscriber GMV is high enough that 1% exceeds a fixed contract.
+- name: Accountability
+  description: Review monthly Smartrr invoices against subscriber GMV growth and the retention/revenue the subscription program returns.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

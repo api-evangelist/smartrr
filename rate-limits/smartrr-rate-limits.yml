@@ -1,0 +1,64 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Smartrr
+providerId: smartrr
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- Subscriptions
+- Shopify
+- Ecommerce
+- Rate Limiting
+- Quotas
+description: >-
+  Smartrr does not publish fixed numeric rate limits for its Vendor API. The
+  public OpenAPI document defines apiKey (x-smartrr-access-token) authentication
+  and paginated list endpoints (pageNumber / pageSize) but does not document a
+  per-minute or per-account request cap. In practice, high-volume read patterns
+  should be paginated and bulk mutations should use the provided bulk endpoints
+  (bulk-cancel, bulk-pause, bulk-skip, bulk-retry) rather than many single
+  requests. Because Smartrr sits on top of Shopify, some operations are
+  ultimately bounded by Shopify's own API limits.
+notes: >-
+  No numeric per-endpoint or per-account limit is documented as of the review
+  date. Treat any 429 response as a signal to back off, and confirm current
+  throttling behavior with Smartrr support for high-volume integrations.
+sources:
+- https://api.smartrr.com/docs/redoc/
+- https://api.smartrr.com/docs/spec.json
+- https://help.smartrr.com/docs/support/developer-documentation
+responseCodes:
+  throttled: 429
+limits:
+- name: Vendor API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for the Vendor API.
+- name: List Pagination
+  scope: endpoint
+  metric: records
+  limit: configurable via pageSize
+  notes: List endpoints return paginated results controlled by pageNumber and pageSize.
+- name: Subscription Events
+  scope: subscription
+  metric: events
+  limit: 250 most recent
+  notes: The purchase-state events endpoint returns up to the 250 most recent events.
+- name: Bulk Operations
+  scope: account
+  metric: records
+  limit: batch-bounded
+  notes: Prefer bulk endpoints (bulk-cancel, bulk-pause, bulk-skip, bulk-retry) over many single mutations.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header on 429 responses.
+- name: Pagination
+  description: Iterate large result sets with pageNumber / pageSize rather than requesting unbounded lists.
+- name: Upstream Shopify Limits
+  description: Some operations proxy to or depend on Shopify, so Shopify's own API rate limits can apply indirectly.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

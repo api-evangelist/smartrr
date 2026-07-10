@@ -1,0 +1,167 @@
+aid: smartrr
+url: https://raw.githubusercontent.com/api-evangelist/smartrr/refs/heads/main/apis.yml
+name: Smartrr
+kind: company
+description: >-
+  Smartrr is a subscription and loyalty platform for Shopify DTC brands. It adds
+  subscribe-and-save subscriptions, a branded customer account portal, loyalty
+  and rewards, referrals, bundles, and retention tooling on top of Shopify. Its
+  Vendor API (https://api.smartrr.com) lets merchants programmatically manage
+  the subscriptions their customers hold - modeled as "purchase states" - along
+  with the subscribers, orders, bills, and the selling plans / subscription
+  programs products are sold on. The API is authenticated with a per-organization
+  access token generated in the Smartrr admin Integrations tab and sent in the
+  x-smartrr-access-token header. A full OpenAPI document (116 operations) is
+  served publicly at https://api.smartrr.com/docs/spec.json and rendered at
+  https://api.smartrr.com/docs/redoc/.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Subscriptions
+- Loyalty
+- Shopify
+- Ecommerce
+- DTC
+- Recurring Revenue
+- Subscription Management
+created: '2026-07-10'
+modified: '2026-07-10'
+specificationVersion: '0.19'
+apis:
+- aid: smartrr:smartrr-subscriptions-api
+  name: Smartrr Subscriptions API
+  tags:
+  - Subscriptions
+  - Purchase State
+  - Recurring Revenue
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.smartrr.com/docs/redoc/
+  baseURL: https://api.smartrr.com
+  properties:
+  - url: https://help.smartrr.com/docs/support/developer-documentation
+    type: Documentation
+  - url: https://api.smartrr.com/docs/redoc/
+    type: APIReference
+  - url: openapi/smartrr-openapi.yml
+    type: OpenAPI
+  - url: collections/smartrr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smartrr.opencollection.json
+    type: OpenCollection
+  description: >-
+    Read and manage the subscriptions customers hold, which Smartrr models as
+    "purchase states". Create subscriptions, list them by organization,
+    customer, or Shopify subscription ID, and drive the full lifecycle - skip,
+    unskip, pause, activate, cancel, set the next billing date, change the
+    selling plan, add or swap line items, and run bulk operations across many
+    subscriptions.
+- aid: smartrr:smartrr-subscribers-api
+  name: Smartrr Subscribers API
+  tags:
+  - Subscribers
+  - Customers
+  - Loyalty
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.smartrr.com/docs/redoc/
+  baseURL: https://api.smartrr.com
+  properties:
+  - url: https://api.smartrr.com/docs/redoc/
+    type: APIReference
+  - url: openapi/smartrr-openapi.yml
+    type: OpenAPI
+  - url: collections/smartrr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smartrr.opencollection.json
+    type: OpenCollection
+  description: >-
+    Work with subscribers, which Smartrr models as customer relationships. List
+    and retrieve customers by Smartrr or Shopify ID, read their payment methods
+    and orders, import customers and payment methods from Shopify, fetch a
+    customer's referral code and link, and add loyalty points.
+- aid: smartrr:smartrr-orders-api
+  name: Smartrr Orders and Bills API
+  tags:
+  - Orders
+  - Bills
+  - Transactions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.smartrr.com/docs/redoc/
+  baseURL: https://api.smartrr.com
+  properties:
+  - url: https://api.smartrr.com/docs/redoc/
+    type: APIReference
+  - url: openapi/smartrr-openapi.yml
+    type: OpenAPI
+  - url: collections/smartrr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smartrr.opencollection.json
+    type: OpenCollection
+  description: >-
+    List and retrieve the orders subscriptions generate, open and close orders,
+    and manage the recurring bills (subscription transactions) behind them -
+    read bills, inspect a bill's audit history, and retry or cancel bills
+    individually or in bulk.
+- aid: smartrr:smartrr-plans-api
+  name: Smartrr Plans and Purchasables API
+  tags:
+  - Plans
+  - Selling Plans
+  - Products
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.smartrr.com/docs/redoc/
+  baseURL: https://api.smartrr.com
+  properties:
+  - url: https://api.smartrr.com/docs/redoc/
+    type: APIReference
+  - url: openapi/smartrr-openapi.yml
+    type: OpenAPI
+  - url: collections/smartrr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smartrr.opencollection.json
+    type: OpenCollection
+  description: >-
+    Read the products and terms subscriptions are sold on - purchasables and
+    purchasable collections, selling plans and selling plan groups, and the
+    subscription programs configured for a shop. Update purchasables to control
+    what is available for subscription.
+- aid: smartrr:smartrr-webhooks-api
+  name: Smartrr Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://help.smartrr.com/docs/support/integrations/webhooks
+  baseURL: https://api.smartrr.com
+  properties:
+  - url: https://help.smartrr.com/docs/support/integrations/webhooks
+    type: Documentation
+  - url: https://api.smartrr.com/docs/redoc/
+    type: APIReference
+  - url: openapi/smartrr-openapi.yml
+    type: OpenAPI
+  - url: collections/smartrr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smartrr.opencollection.json
+    type: OpenCollection
+  description: >-
+    Register HTTP endpoints to receive Smartrr event notifications. Create,
+    list, edit, and delete webhooks for the organization so external systems
+    can react to subscription and billing events in near real time.
+common:
+- type: Website
+  url: https://smartrr.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/smartrr
+- type: Documentation
+  url: https://help.smartrr.com/docs
+- type: APIReference
+  url: https://api.smartrr.com/docs/redoc/
+- type: Plans
+  url: plans/smartrr-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/smartrr-rate-limits.yml
+- type: FinOps
+  url: finops/smartrr-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

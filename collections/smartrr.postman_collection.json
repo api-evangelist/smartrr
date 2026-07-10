@@ -1,0 +1,234 @@
+{
+  "info": {
+    "name": "Smartrr Vendor API",
+    "description": "Programmatic access to Smartrr, a subscription and loyalty platform for Shopify DTC brands. Manage subscriptions (purchase states), subscribers (customer relationships), orders, bills, plans, and webhooks. Base URL: https://api.smartrr.com. All requests authenticate with a per-organization API access token generated in the Smartrr admin Integrations tab and sent in the x-smartrr-access-token header. This is a curated subset of Smartrr's public OpenAPI document at https://api.smartrr.com/docs/spec.json.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "x-smartrr-access-token", "type": "string" },
+      { "key": "value", "value": "{{smartrrAccessToken}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.smartrr.com", "type": "string" },
+    { "key": "smartrrAccessToken", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Subscriptions",
+      "item": [
+        {
+          "name": "Get Purchase States",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/purchase-state", "host": ["{{baseUrl}}"], "path": ["vendor", "purchase-state"] },
+            "description": "List subscriptions (purchase states) for the organization."
+          }
+        },
+        {
+          "name": "Create Purchase State",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/vendor/purchase-state", "host": ["{{baseUrl}}"], "path": ["vendor", "purchase-state"] },
+            "description": "Create a new subscription (purchase state) for a customer."
+          }
+        },
+        {
+          "name": "Get Purchase State By Shopify Subscription ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/purchase-state/:shopifySubscriptionId", "host": ["{{baseUrl}}"], "path": ["vendor", "purchase-state", ":shopifySubscriptionId"], "variable": [{ "key": "shopifySubscriptionId", "value": "" }] },
+            "description": "Retrieve a single subscription by its Shopify subscription ID."
+          }
+        },
+        {
+          "name": "Skip Purchase",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/skip", "host": ["{{baseUrl}}"], "path": ["vendor", "customer", ":customerRelationshipId", "purchase-state", ":customerPurchaseStateId", "skip"], "variable": [{ "key": "customerRelationshipId", "value": "" }, { "key": "customerPurchaseStateId", "value": "" }] },
+            "description": "Skip the next order on a subscription."
+          }
+        },
+        {
+          "name": "Pause Purchase",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"unpauseDate\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/pause", "host": ["{{baseUrl}}"], "path": ["vendor", "customer", ":customerRelationshipId", "purchase-state", ":customerPurchaseStateId", "pause"], "variable": [{ "key": "customerRelationshipId", "value": "" }, { "key": "customerPurchaseStateId", "value": "" }] },
+            "description": "Pause a subscription, optionally with an automatic unpause date."
+          }
+        },
+        {
+          "name": "Cancel Purchase",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/cancel", "host": ["{{baseUrl}}"], "path": ["vendor", "customer", ":customerRelationshipId", "purchase-state", ":customerPurchaseStateId", "cancel"], "variable": [{ "key": "customerRelationshipId", "value": "" }, { "key": "customerPurchaseStateId", "value": "" }] },
+            "description": "Cancel a subscription."
+          }
+        },
+        {
+          "name": "Set Next Billing Date on Purchase",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/next-billing-date", "host": ["{{baseUrl}}"], "path": ["vendor", "customer", ":customerRelationshipId", "purchase-state", ":customerPurchaseStateId", "next-billing-date"], "variable": [{ "key": "customerRelationshipId", "value": "" }, { "key": "customerPurchaseStateId", "value": "" }] },
+            "description": "Reschedule the next billing date on a subscription."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscribers",
+      "item": [
+        {
+          "name": "Get Customer Relationship",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/customer-relationship", "host": ["{{baseUrl}}"], "path": ["vendor", "customer-relationship"] },
+            "description": "List subscribers (customer relationships)."
+          }
+        },
+        {
+          "name": "Get Customer Relationship by Shopify ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/customer-relationship/:customerShopifyId", "host": ["{{baseUrl}}"], "path": ["vendor", "customer-relationship", ":customerShopifyId"], "variable": [{ "key": "customerShopifyId", "value": "" }] },
+            "description": "Retrieve a subscriber by Shopify customer ID."
+          }
+        },
+        {
+          "name": "Get Payment methods",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/customer-relationship/:customerRelationshipId/payment-methods", "host": ["{{baseUrl}}"], "path": ["vendor", "customer-relationship", ":customerRelationshipId", "payment-methods"], "variable": [{ "key": "customerRelationshipId", "value": "" }] },
+            "description": "List a subscriber's payment methods."
+          }
+        },
+        {
+          "name": "Add loyalty points to customer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/vendor/customer-relationship/:customerRelationshipId/orgPoints", "host": ["{{baseUrl}}"], "path": ["vendor", "customer-relationship", ":customerRelationshipId", "orgPoints"], "variable": [{ "key": "customerRelationshipId", "value": "" }] },
+            "description": "Add loyalty points to a customer."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders and Bills",
+      "item": [
+        {
+          "name": "Get Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/order", "host": ["{{baseUrl}}"], "path": ["vendor", "order"] },
+            "description": "List orders generated by subscriptions."
+          }
+        },
+        {
+          "name": "Get Order by Shopify order ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/orders/:shopifyId", "host": ["{{baseUrl}}"], "path": ["vendor", "orders", ":shopifyId"], "variable": [{ "key": "shopifyId", "value": "" }] },
+            "description": "Retrieve a single order by Shopify order ID."
+          }
+        },
+        {
+          "name": "Get Bills",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/bill", "host": ["{{baseUrl}}"], "path": ["vendor", "bill"] },
+            "description": "List recurring bills (subscription transactions)."
+          }
+        },
+        {
+          "name": "Retry a bill",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/vendor/bill/:billId/retry", "host": ["{{baseUrl}}"], "path": ["vendor", "bill", ":billId", "retry"], "variable": [{ "key": "billId", "value": "" }] },
+            "description": "Retry a failed bill."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plans",
+      "item": [
+        {
+          "name": "Get Purchasables",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/purchasable", "host": ["{{baseUrl}}"], "path": ["vendor", "purchasable"] },
+            "description": "List purchasable products available for subscription."
+          }
+        },
+        {
+          "name": "Get Selling Plan Groups",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/selling-plan-group", "host": ["{{baseUrl}}"], "path": ["vendor", "selling-plan-group"] },
+            "description": "List the shop's selling plan groups."
+          }
+        },
+        {
+          "name": "Get all programs for a shop",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/selling-plan-configs", "host": ["{{baseUrl}}"], "path": ["vendor", "selling-plan-configs"] },
+            "description": "List the shop's subscription programs."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "Get webhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/webhook", "host": ["{{baseUrl}}"], "path": ["vendor", "webhook"] },
+            "description": "List webhooks for the current organization."
+          }
+        },
+        {
+          "name": "Create a new webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/vendor/webhook", "host": ["{{baseUrl}}"], "path": ["vendor", "webhook"] },
+            "description": "Register a new webhook endpoint."
+          }
+        }
+      ]
+    }
+  ]
+}

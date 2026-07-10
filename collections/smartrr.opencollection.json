@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartrr Vendor API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "x-smartrr-access-token",
+        "value": "{{smartrrAccessToken}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Subscriptions", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get Purchase States", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/purchase-state" },
+          "docs": "List subscriptions (purchase states) for the organization."
+        },
+        {
+          "info": { "name": "Create Purchase State", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.smartrr.com/vendor/purchase-state", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new subscription (purchase state) for a customer."
+        },
+        {
+          "info": { "name": "Get Purchase State By Shopify Subscription ID", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchase-state/:shopifySubscriptionId",
+            "params": [ { "name": "shopifySubscriptionId", "value": "", "type": "path", "description": "Shopify subscription ID." } ]
+          },
+          "docs": "Retrieve a single subscription by its Shopify subscription ID."
+        },
+        {
+          "info": { "name": "Skip Purchase", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/skip",
+            "params": [ { "name": "customerRelationshipId", "value": "", "type": "path" }, { "name": "customerPurchaseStateId", "value": "", "type": "path" } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Skip the next order on a subscription."
+        },
+        {
+          "info": { "name": "Pause Purchase", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/pause",
+            "params": [ { "name": "customerRelationshipId", "value": "", "type": "path" }, { "name": "customerPurchaseStateId", "value": "", "type": "path" } ],
+            "body": { "type": "json", "data": "{\"unpauseDate\":\"\"}" }
+          },
+          "docs": "Pause a subscription, optionally with an automatic unpause date."
+        },
+        {
+          "info": { "name": "Cancel Purchase", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/cancel",
+            "params": [ { "name": "customerRelationshipId", "value": "", "type": "path" }, { "name": "customerPurchaseStateId", "value": "", "type": "path" } ]
+          },
+          "docs": "Cancel a subscription."
+        },
+        {
+          "info": { "name": "Set Next Billing Date on Purchase", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/next-billing-date",
+            "params": [ { "name": "customerRelationshipId", "value": "", "type": "path" }, { "name": "customerPurchaseStateId", "value": "", "type": "path" } ]
+          },
+          "docs": "Reschedule the next billing date on a subscription."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Subscribers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get Customer Relationship", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/customer-relationship" },
+          "docs": "List subscribers (customer relationships)."
+        },
+        {
+          "info": { "name": "Get Customer Relationship by Shopify ID", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/:customerShopifyId",
+            "params": [ { "name": "customerShopifyId", "value": "", "type": "path" } ]
+          },
+          "docs": "Retrieve a subscriber by Shopify customer ID."
+        },
+        {
+          "info": { "name": "Get Payment methods", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/:customerRelationshipId/payment-methods",
+            "params": [ { "name": "customerRelationshipId", "value": "", "type": "path" } ]
+          },
+          "docs": "List a subscriber's payment methods."
+        },
+        {
+          "info": { "name": "Add loyalty points to customer", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/:customerRelationshipId/orgPoints",
+            "params": [ { "name": "customerRelationshipId", "value": "", "type": "path" } ]
+          },
+          "docs": "Add loyalty points to a customer."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Orders and Bills", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get Orders", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/order" },
+          "docs": "List orders generated by subscriptions."
+        },
+        {
+          "info": { "name": "Get Order by Shopify order ID", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/orders/:shopifyId",
+            "params": [ { "name": "shopifyId", "value": "", "type": "path" } ]
+          },
+          "docs": "Retrieve a single order by Shopify order ID."
+        },
+        {
+          "info": { "name": "Get Bills", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/bill" },
+          "docs": "List recurring bills (subscription transactions)."
+        },
+        {
+          "info": { "name": "Retry a bill", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.smartrr.com/vendor/bill/:billId/retry",
+            "params": [ { "name": "billId", "value": "", "type": "path" } ]
+          },
+          "docs": "Retry a failed bill."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Plans", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get Purchasables", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/purchasable" },
+          "docs": "List purchasable products available for subscription."
+        },
+        {
+          "info": { "name": "Get Selling Plan Groups", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/selling-plan-group" },
+          "docs": "List the shop's selling plan groups."
+        },
+        {
+          "info": { "name": "Get all programs for a shop", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/selling-plan-configs" },
+          "docs": "List the shop's subscription programs."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get webhooks", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.smartrr.com/vendor/webhook" },
+          "docs": "List webhooks for the current organization."
+        },
+        {
+          "info": { "name": "Create a new webhook", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.smartrr.com/vendor/webhook", "body": { "type": "json", "data": "{}" } },
+          "docs": "Register a new webhook endpoint."
+        }
+      ]
+    }
+  ]
+}

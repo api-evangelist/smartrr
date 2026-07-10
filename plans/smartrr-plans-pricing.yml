@@ -1,0 +1,180 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Smartrr
+providerId: smartrr
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- Subscriptions
+- Loyalty
+- Shopify
+- Ecommerce
+- Plans
+description: >-
+  Smartrr is billed as a Shopify subscription app, not per API call. Pricing is
+  a monthly base fee tied to a plan tier plus a usage fee of 1% of subscriber
+  GMV (the gross merchandise value of all orders involving a subscription,
+  including the first subscription order and every reorder attached to it).
+  Smartrr markets a "no transaction fee" guarantee, meaning there is no
+  additional per-order transaction fee beyond that 1% of subscriber GMV. There
+  are three published tiers - Launch ($99/mo), Grow ($299/mo), and Excel
+  (starting at $499/mo) - plus negotiated, flat-fee annual contracts with
+  volume discounts for larger merchants. A 14-day free trial is offered.
+  Contracts are month-to-month and can be cancelled at any time (billed through
+  the end of the cancellation month). The Vendor API is included with a Smartrr
+  subscription and has no separate API access fee.
+notes: >-
+  Monthly base fees and the 1% subscriber GMV rate were sourced from the Smartrr
+  pricing page and third-party reviews as of the review date; verify current
+  numbers on https://smartrr.com/pricing during reconciliation. Feature
+  allocation across tiers is approximate.
+sources:
+- https://smartrr.com/pricing
+- https://support.smartrr.com/hc/en-us/articles/38949730932753-Plans
+- https://apps.shopify.com/smartrr
+plans:
+- id: smartrr-launch
+  name: Launch
+  type: paid
+  description: >-
+    Entry tier for brands getting started with subscriptions - subscribe-and-save
+    subscriptions, a branded customer account portal, subscription management,
+    automated SMS/email notifications, a reports dashboard, bulk updates, and
+    24/7 chat support.
+  entries:
+  - label: Monthly Base Fee
+    name: launch_base
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '99'
+    currency: USD
+    userMultiplied: false
+  - label: Subscriber GMV Fee
+    name: launch_gmv
+    type: usage
+    metric: gmv
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1% of subscriber GMV
+    currency: USD
+    userMultiplied: false
+  elements:
+  - name: Subscribe and Save Subscriptions
+  - name: Branded Customer Account Portal
+  - name: Automated SMS and Email Notifications
+  - name: Reports Dashboard
+  - name: Bulk Updates
+  - name: Vendor API
+  - name: 24/7 Chat Support
+- id: smartrr-grow
+  name: Grow
+  type: paid
+  description: >-
+    Growth tier for scaling subscribers into the tens of thousands - everything
+    in Launch plus advanced subscription programs, customer portal add-ons,
+    Smartrr Retention Actions, dunning management, advanced analytics, direct
+    integrations, Shopify Flows, a dedicated CSM, and implementation support.
+  entries:
+  - label: Monthly Base Fee
+    name: grow_base
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '299'
+    currency: USD
+    userMultiplied: false
+  - label: Subscriber GMV Fee
+    name: grow_gmv
+    type: usage
+    metric: gmv
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1% of subscriber GMV
+    currency: USD
+    userMultiplied: false
+  elements:
+  - name: Everything in Launch
+  - name: Advanced Subscription Programs
+  - name: Smartrr Retention Actions
+  - name: Dunning Management
+  - name: Advanced Analytics
+  - name: Direct Integrations
+  - name: Shopify Flows
+  - name: Dedicated CSM
+- id: smartrr-excel
+  name: Excel
+  type: paid
+  description: >-
+    Top published tier for larger merchants - everything in Grow plus
+    build-a-box bundles, loyalty and rewards, one-click referrals, product
+    spotlights, a dedicated Slack channel, regular business audits, and custom
+    reporting. Volume-discount and flat-fee agreements are available.
+  entries:
+  - label: Monthly Base Fee
+    name: excel_base
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from 499
+    currency: USD
+    userMultiplied: false
+  - label: Subscriber GMV Fee
+    name: excel_gmv
+    type: usage
+    metric: gmv
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1% of subscriber GMV
+    currency: USD
+    userMultiplied: false
+  elements:
+  - name: Everything in Grow
+  - name: Build-a-Box Bundles
+  - name: Loyalty and Rewards
+  - name: One-Click Referrals
+  - name: Product Spotlights
+  - name: Dedicated Slack Channel
+  - name: Custom Reporting
+- id: smartrr-enterprise
+  name: Enterprise / Custom
+  type: enterprise
+  description: >-
+    Negotiated flat-fee annual contracts with volume-discount pricing for
+    high-GMV merchants. Contact Smartrr sales.
+  entries:
+  - label: Annual Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    currency: USD
+    userMultiplied: false
+  elements:
+  - name: Volume-Discount Pricing
+  - name: Flat-Fee Annual Contract
+  - name: Custom Terms
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

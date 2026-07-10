@@ -1,0 +1,109 @@
+aid: smartrr
+name: Smartrr
+review:
+  question: Does Smartrr expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-10'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Smartrr's public API surface (the Vendor
+    API at https://api.smartrr.com) is request/response REST over HTTPS,
+    authenticated with an x-smartrr-access-token header. The only server-push
+    mechanism Smartrr offers is outbound webhooks - Smartrr POSTs event
+    notifications to a merchant-registered HTTP endpoint. There is no
+    bidirectional or streaming WebSocket (ws:// or wss://) transport on
+    Smartrr's own API to model.
+findings:
+  summary: |
+    Smartrr does not publish a documented public WebSocket API. Smartrr is a
+    subscription and loyalty platform for Shopify DTC brands. Its public
+    programmatic surface is the Vendor API at https://api.smartrr.com, a REST
+    API whose full OpenAPI 3.0 document (116 operations) is served publicly at
+    https://api.smartrr.com/docs/spec.json and rendered with Redoc at
+    https://api.smartrr.com/docs/redoc/. Every operation is HTTPS
+    request/response and is authenticated with a per-organization API access
+    token generated in the Smartrr admin Integrations tab and sent in the
+    x-smartrr-access-token header. Server-initiated delivery is handled by
+    outbound webhooks (POST /vendor/webhook to register an endpoint Smartrr
+    calls on events), not by a WebSocket. No ws:// or wss:// endpoint is
+    documented anywhere in Smartrr's API.
+  openSource: |
+    Smartrr is a commercial SaaS app; the API is not open source. Access
+    requires a Smartrr account (a paid Shopify subscription app) and an API
+    token minted in the admin. The OpenAPI specification itself is served
+    publicly and unauthenticated, so the endpoint catalog is openly
+    documented even though calling it requires an account token.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.smartrr.com
+      documented: true
+      note: Vendor API. All operations request/response over HTTPS under the /vendor path, apiKey header auth.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Smartrr POSTs event notifications to a merchant-registered HTTP endpoint. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Smartrr Vendor API as of the review date.
+  authentication:
+    scheme: apiKey
+    in: header
+    name: x-smartrr-access-token
+    note: Per-organization token generated in the Smartrr admin Integrations tab (Add Key).
+  endpointsConfirmedRest:
+    - GET    https://api.smartrr.com/vendor/purchase-state
+    - POST   https://api.smartrr.com/vendor/purchase-state
+    - GET    https://api.smartrr.com/vendor/purchase-state/{shopifySubscriptionId}
+    - GET    https://api.smartrr.com/vendor/purchase-state/{shopifySubscriptionId}/orders
+    - GET    https://api.smartrr.com/vendor/purchase-state/{shopifySubscriptionId}/bills
+    - GET    https://api.smartrr.com/vendor/customer/{customerRelationshipId}/purchase-state/
+    - PUT    https://api.smartrr.com/vendor/customer/{customerRelationshipId}/purchase-state/{customerPurchaseStateId}/skip
+    - PUT    https://api.smartrr.com/vendor/customer/{customerRelationshipId}/purchase-state/{customerPurchaseStateId}/pause
+    - PUT    https://api.smartrr.com/vendor/customer/{customerRelationshipId}/purchase-state/{customerPurchaseStateId}/cancel
+    - PUT    https://api.smartrr.com/vendor/customer/{customerRelationshipId}/purchase-state/{customerPurchaseStateId}/next-billing-date
+    - GET    https://api.smartrr.com/vendor/customer-relationship
+    - GET    https://api.smartrr.com/vendor/customer-relationship/{customerShopifyId}
+    - GET    https://api.smartrr.com/vendor/customer-relationship/{customerRelationshipId}/payment-methods
+    - GET    https://api.smartrr.com/vendor/order
+    - GET    https://api.smartrr.com/vendor/orders/{shopifyId}
+    - GET    https://api.smartrr.com/vendor/bill
+    - POST   https://api.smartrr.com/vendor/bill/{billId}/retry
+    - GET    https://api.smartrr.com/vendor/purchasable
+    - GET    https://api.smartrr.com/vendor/selling-plan-group
+    - GET    https://api.smartrr.com/vendor/webhook
+    - POST   https://api.smartrr.com/vendor/webhook
+  endpointsModeled: false
+  endpointsNote: |
+    All endpoint paths and methods above are taken directly from Smartrr's live
+    public OpenAPI document (https://api.smartrr.com/docs/spec.json). They are
+    confirmed, not modeled. The authored openapi/smartrr-openapi.yml in this
+    repository is a curated subset of that 116-operation surface; request and
+    response bodies in the authored spec are summarized rather than fully
+    reproduced.
+sources:
+  - url: https://api.smartrr.com/docs/redoc/
+    type: APIReference
+    note: Redoc rendering of the Smartrr Vendor API.
+  - url: https://api.smartrr.com/docs/spec.json
+    type: OpenAPI
+    note: Live public OpenAPI 3.0 document, 116 operations, x-smartrr-access-token apiKey auth.
+  - url: https://help.smartrr.com/docs/support/developer-documentation
+    type: Documentation
+    note: Smartrr developer documentation index.
+  - url: https://help.smartrr.com/docs/support/integrations/webhooks
+    type: Documentation
+    note: Webhooks - outbound HTTP event delivery, not WebSocket.
+  - url: https://smartrr.com/pricing
+    type: Pricing
+    note: Launch / Grow / Excel plans, monthly base plus 1% subscriber GMV.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Smartrr's public API is
+    request/response REST (the Vendor API), and its only server-push mechanism
+    is outbound webhooks over HTTP. No AsyncAPI document was created because
+    there is no server-push streaming transport on Smartrr's own API to model.
