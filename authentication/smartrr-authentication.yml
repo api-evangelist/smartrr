@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/smartrr-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: smartrrAccessToken
+  type: apiKey
+  in: header
+  parameter: x-smartrr-access-token
+  description: Per-organization API access token generated in the Smartrr admin under the Integrations
+    tab (Add Key). Sent on every request in the x-smartrr-access-token header.
+  sources:
+  - openapi/smartrr-openapi.yml
