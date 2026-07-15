@@ -148,6 +148,8 @@ apis:
     list, edit, and delete webhooks for the organization so external systems
     can react to subscription and billing events in near real time.
 common:
+- type: AgenticAccess
+  url: agentic-access/smartrr-agentic-access.yml
 - type: DomainSecurity
   url: security/smartrr-domain-security.yml
 - type: Authentication
