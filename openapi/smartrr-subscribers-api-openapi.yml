@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Smartrr Vendor Bills Subscribers API
+  description: The Smartrr Vendor API is the programmatic surface behind Smartrr, a subscription and loyalty platform for Shopify DTC brands. It lets a merchant (vendor) read and manage the subscriptions ("purchase states") their customers hold, the customers (subscribers) themselves, the orders and bills those subscriptions generate, and the subscription programs / selling plans that products are sold on. All requests are made against https://api.smartrr.com and are authenticated with a per-organization API access token generated in the Smartrr admin under the Integrations tab and sent in the x-smartrr-access-token header. This description is authored by API Evangelist from Smartrr's public OpenAPI document served at https://api.smartrr.com/docs/spec.json (rendered at https://api.smartrr.com/docs/redoc/); it is a curated subset of the full 116-operation surface covering the core Subscriptions, Subscribers, Orders, Bills, Plans, and Webhooks resources. Endpoint paths and methods are taken directly from that live specification; request and response bodies are summarized.
+  version: 1.0.0
+  contact:
+    name: Smartrr
+    url: https://smartrr.com
+servers:
+- url: https://api.smartrr.com
+  description: Smartrr production
+security:
+- smartrrAccessToken: []
+tags:
+- name: Subscribers
+  description: Customer relationships (subscribers) - the Shopify customers who hold subscriptions, their payment methods, loyalty points, and referral links.
+paths:
+  /vendor/customer-relationship:
+    get:
+      tags:
+      - Subscribers
+      summary: Get Customer Relationship
+      description: List subscribers (customer relationships) for the organization.
+      operationId: getCustomerRelationships
+      responses:
+        '200':
+          description: A paginated list of customer relationships.
+  /vendor/customer-relationship/{customerShopifyId}:
+    get:
+      tags:
+      - Subscribers
+      summary: Get Customer Relationship by Shopify ID
+      operationId: getCustomerRelationshipByShopifyId
+      parameters:
+      - name: customerShopifyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A single customer relationship.
+  /vendor/customer-relationship/{customerRelationshipId}/payment-methods:
+    get:
+      tags:
+      - Subscribers
+      summary: Get Payment methods
+      operationId: getPaymentMethods
+      parameters:
+      - name: customerRelationshipId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The customer's payment methods.
+  /vendor/customer-relationship/{customerShopifyId}/referral-link:
+    get:
+      tags:
+      - Subscribers
+      summary: Get customer referral code and link
+      operationId: getReferralLink
+      parameters:
+      - name: customerShopifyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The customer's referral code and link.
+  /vendor/customer-relationship/{customerRelationshipId}/orgPoints:
+    put:
+      tags:
+      - Subscribers
+      summary: Add loyalty points to customer
+      operationId: addLoyaltyPoints
+      parameters:
+      - name: customerRelationshipId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The updated loyalty points balance.
+  /vendor/customer-relationship/import:
+    post:
+      tags:
+      - Subscribers
+      summary: Import Customer Relationship from Shopify Customer
+      operationId: importCustomerRelationship
+      responses:
+        '200':
+          description: The imported customer relationship.
+  /vendor/customer/{custRelId}/orders:
+    get:
+      tags:
+      - Subscribers
+      summary: Get Orders by customer ID
+      operationId: getOrdersByCustomer
+      parameters:
+      - name: custRelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Orders for the customer.
+components:
+  securitySchemes:
+    smartrrAccessToken:
+      type: apiKey
+      in: header
+      name: x-smartrr-access-token
+      description: Per-organization API access token generated in the Smartrr admin under the Integrations tab (Add Key). Sent on every request in the x-smartrr-access-token header.
