@@ -1,0 +1,24 @@
+{
+  "provider": "smartrr",
+  "sources": [
+    "smartrr-bills-api-openapi.yml",
+    "smartrr-orders-api-openapi.yml",
+    "smartrr-plans-api-openapi.yml",
+    "smartrr-subscribers-api-openapi.yml",
+    "smartrr-subscriptions-api-openapi.yml",
+    "smartrr-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "smartrr-bills-api-openapi.yml",
+    "smartrr-orders-api-openapi.yml",
+    "smartrr-plans-api-openapi.yml",
+    "smartrr-subscribers-api-openapi.yml",
+    "smartrr-subscriptions-api-openapi.yml",
+    "smartrr-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
