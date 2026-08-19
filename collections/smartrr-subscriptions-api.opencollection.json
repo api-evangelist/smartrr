@@ -1,0 +1,364 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartrr Vendor Bills Subscriptions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-smartrr-access-token",
+      "value": "{{x-smartrr-access-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Purchase States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchase-state",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List subscriptions (purchase states) for the organization, with pagination and filtering."
+        },
+        {
+          "info": {
+            "name": "Create Purchase State",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.smartrr.com/vendor/purchase-state",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new subscription (purchase state) for a customer."
+        },
+        {
+          "info": {
+            "name": "Get Purchase State By Shopify Subscription ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchase-state/:shopifySubscriptionId",
+            "params": [
+              {
+                "name": "shopifySubscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Purchase State By Shopify Subscription ID"
+        },
+        {
+          "info": {
+            "name": "Get Orders By Shopify Subscription ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchase-state/:shopifySubscriptionId/orders",
+            "params": [
+              {
+                "name": "shopifySubscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Orders By Shopify Subscription ID"
+        },
+        {
+          "info": {
+            "name": "Get Bills By Shopify Subscription ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchase-state/:shopifySubscriptionId/bills",
+            "params": [
+              {
+                "name": "shopifySubscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Bills By Shopify Subscription ID"
+        },
+        {
+          "info": {
+            "name": "Get Events by Shopify Subscription ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchase-state/:shopifySubscriptionId/events",
+            "params": [
+              {
+                "name": "shopifySubscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns up to 250 most recent events for the subscription."
+        },
+        {
+          "info": {
+            "name": "Get Purchase States By Customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Purchase States By Customer ID"
+        },
+        {
+          "info": {
+            "name": "Skip Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/skip",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Skip the next order on a subscription."
+        },
+        {
+          "info": {
+            "name": "Unskip Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/unskip",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unskip Purchase"
+        },
+        {
+          "info": {
+            "name": "Pause Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/pause",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pause Purchase"
+        },
+        {
+          "info": {
+            "name": "Activate Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/activate",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resume / activate a paused subscription."
+        },
+        {
+          "info": {
+            "name": "Cancel Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/cancel",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel Purchase"
+        },
+        {
+          "info": {
+            "name": "Set Next Billing Date on Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/next-billing-date",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set Next Billing Date on Purchase"
+        },
+        {
+          "info": {
+            "name": "Set Selling Plan on Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/selling-plan",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Change the selling plan (cadence / terms) a subscription is on."
+        },
+        {
+          "info": {
+            "name": "Add Line Item to Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.smartrr.com/vendor/customer/:customerRelationshipId/purchase-state/:customerPurchaseStateId/line-item",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerPurchaseStateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add Line Item to Purchase"
+        },
+        {
+          "info": {
+            "name": "Bulk Cancel Purchases",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/purchase-state/bulk-cancel"
+          },
+          "docs": "Bulk Cancel Purchases"
+        },
+        {
+          "info": {
+            "name": "Bulk Pause Purchases",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer/purchase-state/bulk-pause"
+          },
+          "docs": "Bulk Pause Purchases"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

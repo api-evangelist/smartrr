@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartrr Vendor Bills API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-smartrr-access-token",
+      "value": "{{x-smartrr-access-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bills",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/bill"
+          },
+          "docs": "Get Bills"
+        },
+        {
+          "info": {
+            "name": "Gets bill audit history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/bill/:billId/history",
+            "params": [
+              {
+                "name": "billId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets bill audit history"
+        },
+        {
+          "info": {
+            "name": "Retry a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.smartrr.com/vendor/bill/:billId/retry",
+            "params": [
+              {
+                "name": "billId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retry a bill"
+        },
+        {
+          "info": {
+            "name": "Cancels a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.smartrr.com/vendor/bill/:billId/cancel",
+            "params": [
+              {
+                "name": "billId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels a bill"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

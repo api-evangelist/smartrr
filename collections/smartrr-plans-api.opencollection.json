@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartrr Vendor Bills Plans API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-smartrr-access-token",
+      "value": "{{x-smartrr-access-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Purchasables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchasable"
+          },
+          "docs": "List purchasable products available for subscription."
+        },
+        {
+          "info": {
+            "name": "Update Purchasable",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/purchasable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Purchasable"
+        },
+        {
+          "info": {
+            "name": "Get Purchasable by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchasable/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Purchasable by ID"
+        },
+        {
+          "info": {
+            "name": "Get Purchasable Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/purchasable-collection"
+          },
+          "docs": "Get Purchasable Collection"
+        },
+        {
+          "info": {
+            "name": "Get Selling Plan Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/selling-plan-group"
+          },
+          "docs": "Get Selling Plan Groups"
+        },
+        {
+          "info": {
+            "name": "Get all programs for a shop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/selling-plan-configs"
+          },
+          "docs": "Get all programs for a shop"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

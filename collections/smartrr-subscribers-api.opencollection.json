@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartrr Vendor Bills Subscribers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-smartrr-access-token",
+      "value": "{{x-smartrr-access-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscribers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customer Relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer-relationship"
+          },
+          "docs": "List subscribers (customer relationships) for the organization."
+        },
+        {
+          "info": {
+            "name": "Get Customer Relationship by Shopify ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/:customerShopifyId",
+            "params": [
+              {
+                "name": "customerShopifyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Customer Relationship by Shopify ID"
+        },
+        {
+          "info": {
+            "name": "Get Payment methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/:customerRelationshipId/payment-methods",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Payment methods"
+        },
+        {
+          "info": {
+            "name": "Get customer referral code and link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/:customerShopifyId/referral-link",
+            "params": [
+              {
+                "name": "customerShopifyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get customer referral code and link"
+        },
+        {
+          "info": {
+            "name": "Add loyalty points to customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/:customerRelationshipId/orgPoints",
+            "params": [
+              {
+                "name": "customerRelationshipId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add loyalty points to customer"
+        },
+        {
+          "info": {
+            "name": "Import Customer Relationship from Shopify Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.smartrr.com/vendor/customer-relationship/import"
+          },
+          "docs": "Import Customer Relationship from Shopify Customer"
+        },
+        {
+          "info": {
+            "name": "Get Orders by customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/customer/:custRelId/orders",
+            "params": [
+              {
+                "name": "custRelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Orders by customer ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

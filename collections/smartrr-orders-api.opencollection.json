@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartrr Vendor Bills Orders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-smartrr-access-token",
+      "value": "{{x-smartrr-access-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/order",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Orders"
+        },
+        {
+          "info": {
+            "name": "Get Formatted Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/order/formatted"
+          },
+          "docs": "Get Formatted Orders"
+        },
+        {
+          "info": {
+            "name": "Get Order by Shopify order ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.smartrr.com/vendor/orders/:shopifyId",
+            "params": [
+              {
+                "name": "shopifyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Order by Shopify order ID"
+        },
+        {
+          "info": {
+            "name": "Open Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.smartrr.com/vendor/order/:orderId/open",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Open Order"
+        },
+        {
+          "info": {
+            "name": "Close Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.smartrr.com/vendor/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Close Order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

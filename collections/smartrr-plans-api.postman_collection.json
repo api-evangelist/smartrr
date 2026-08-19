@@ -1,0 +1,495 @@
+{
+  "item": [
+    {
+      "id": "524b483f-8645-4270-be2d-cc536cd88b3a",
+      "name": "Plans",
+      "description": {
+        "content": "Purchasables, selling plans, selling plan groups and subscription programs - the products and the terms they are sold on.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fafc9cb4-bf7e-4480-a99a-00ae87ad0f51",
+          "name": "Get Purchasables",
+          "request": {
+            "name": "Get Purchasables",
+            "description": {
+              "content": "List purchasable products available for subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vendor",
+                "purchasable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5120eb12-0ef5-476b-b1d2-7a3c0a68acf8",
+              "name": "A list of purchasables.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vendor",
+                    "purchasable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-smartrr-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33387843-c16e-462d-b265-b402768416b1",
+          "name": "Update Purchasable",
+          "request": {
+            "name": "Update Purchasable",
+            "description": {},
+            "url": {
+              "path": [
+                "vendor",
+                "purchasable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"purchasable\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be3a73f1-1174-413d-a4c3-79d632e84af3",
+              "name": "The updated purchasable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vendor",
+                    "purchasable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-smartrr-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"purchasable\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9135b41-57b8-4de4-ae81-201df1095dea",
+          "name": "Get Purchasable by ID",
+          "request": {
+            "name": "Get Purchasable by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "vendor",
+                "purchasable",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e34bdb3-dec8-4613-ac50-1ee3cfdd16f1",
+              "name": "A single purchasable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vendor",
+                    "purchasable",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-smartrr-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4d91258-58b1-4342-8910-25949ad1c6c6",
+          "name": "Get Purchasable Collection",
+          "request": {
+            "name": "Get Purchasable Collection",
+            "description": {},
+            "url": {
+              "path": [
+                "vendor",
+                "purchasable-collection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4addbbda-acba-426c-84c3-5c50f7a81fb8",
+              "name": "A list of purchasable collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vendor",
+                    "purchasable-collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-smartrr-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "104304eb-b6b0-462e-b517-29cf9f6ce4e6",
+          "name": "Get Selling Plan Groups",
+          "request": {
+            "name": "Get Selling Plan Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "vendor",
+                "selling-plan-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ffc6a60-d554-4a15-96e4-28e3343fe091",
+              "name": "The shop's selling plan groups.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vendor",
+                    "selling-plan-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-smartrr-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "681193af-d2a3-451e-ac9b-7b61cbc73344",
+          "name": "Get all programs for a shop",
+          "request": {
+            "name": "Get all programs for a shop",
+            "description": {},
+            "url": {
+              "path": [
+                "vendor",
+                "selling-plan-configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c429d314-d6df-4b48-a9fe-940693fc30c2",
+              "name": "The shop's subscription programs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vendor",
+                    "selling-plan-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-smartrr-access-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.smartrr.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-smartrr-access-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "63d311a6-2eb5-450f-882a-6560ca9efbcf",
+    "name": "Smartrr Vendor Bills Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smartrr Vendor API is the programmatic surface behind Smartrr, a subscription and loyalty platform for Shopify DTC brands. It lets a merchant (vendor) read and manage the subscriptions (\"purchase states\") their customers hold, the customers (subscribers) themselves, the orders and bills those subscriptions generate, and the subscription programs / selling plans that products are sold on. All requests are made against https://api.smartrr.com and are authenticated with a per-organization API access token generated in the Smartrr admin under the Integrations tab and sent in the x-smartrr-access-token header. This description is authored by API Evangelist from Smartrr's public OpenAPI document served at https://api.smartrr.com/docs/spec.json (rendered at https://api.smartrr.com/docs/redoc/); it is a curated subset of the full 116-operation surface covering the core Subscriptions, Subscribers, Orders, Bills, Plans, and Webhooks resources. Endpoint paths and methods are taken directly from that live specification; request and response bodies are summarized.\n\nContact Support:\n Name: Smartrr",
+      "type": "text/plain"
+    }
+  }
+}
