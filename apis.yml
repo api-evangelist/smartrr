@@ -29,6 +29,14 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/smartrr.png
 tags:
+- Subscription
+- Loyalty
+- Shopify
+- E-Commerce
+- Direct to Consumer
+- Recurring Revenue
+- Subscription Management
+tags_raw:
 - Subscriptions
 - Loyalty
 - Shopify
@@ -66,6 +74,8 @@ apis:
   humanURL: https://api.smartrr.com/docs/redoc/
   baseURL: https://api.smartrr.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -132,6 +142,8 @@ apis:
   humanURL: https://api.smartrr.com/docs/redoc/
   baseURL: https://api.smartrr.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -152,6 +164,8 @@ apis:
   humanURL: https://api.smartrr.com/docs/redoc/
   baseURL: https://api.smartrr.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
