@@ -14,6 +14,18 @@ description: >-
   x-smartrr-access-token header. A full OpenAPI document (116 operations) is
   served publicly at https://api.smartrr.com/docs/spec.json and rendered at
   https://api.smartrr.com/docs/redoc/.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
