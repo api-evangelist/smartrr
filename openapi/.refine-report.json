@@ -1,12 +1,7 @@
 {
   "provider": "smartrr",
   "sources": [
-    "smartrr-bills-api-openapi.yml",
-    "smartrr-orders-api-openapi.yml",
-    "smartrr-plans-api-openapi.yml",
-    "smartrr-subscribers-api-openapi.yml",
-    "smartrr-subscriptions-api-openapi.yml",
-    "smartrr-webhooks-api-openapi.yml"
+    "_original/smartrr-openapi.yml"
   ],
   "outputs": [
     "smartrr-bills-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "smartrr-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "smartrr-bills-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smartrr-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smartrr-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smartrr-subscribers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smartrr-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smartrr-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
