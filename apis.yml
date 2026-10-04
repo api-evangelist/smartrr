@@ -193,6 +193,9 @@ apis:
   - type: Documentation
     url: https://help.smartrr.com/docs/support/integrations/webhooks
 common:
+- type: CapabilityMap
+  url: capabilities/smartrr-capability-edges.yml
+  name: Smartrr Business Capability Map
 - type: AgenticAccess
   url: agentic-access/smartrr-agentic-access.yml
 - type: DomainSecurity

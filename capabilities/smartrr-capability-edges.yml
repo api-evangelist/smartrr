@@ -1,0 +1,55 @@
+slug: smartrr
+provider: Smartrr
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Subscriptions
+  spec_file: smartrr-subscriptions-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.85
+  evidence: PUT /vendor/customer/{customerRelationshipId}/purchase-state/{customerPurchaseStateId}/pause  pausePurchase;
+    .../cancel  cancelPurchase; POST /vendor/purchase-state  createPurchaseState
+  reason: Purchase states are subscriptions; create, skip, pause, activate and cancel are the in-life
+    subscription lifecycle, spanning modification and cancellation so L1 only.
+- tag: Bills
+  spec_file: smartrr-bills-api-openapi.yml
+  capability_id: BC-4250
+  capability_id_l1: BC-4250
+  capability_name: Subscription Billing & Revenue Management
+  confidence: 0.75
+  evidence: POST /vendor/bill/{billId}/retry  retryBill  Retry a bill; POST /vendor/bill/{billId}/cancel  cancelBill
+  reason: Bills are the recurring charge/invoice artefacts of a subscription platform, with retry (dunning)
+    and cancellation; sits in Subscription Billing & Revenue Management but spans invoicing and payment
+    retry so no single L2 is named.
+- tag: Subscribers
+  spec_file: smartrr-subscribers-api-openapi.yml
+  capability_id: BC-420
+  capability_id_l1: BC-420
+  capability_name: Customer Relationship Management
+  confidence: 0.72
+  evidence: POST /vendor/customer-relationship/import  importCustomerRelationship  Import Customer Relationship
+    from Shopify Customer; PUT .../orgPoints  addLoyaltyPoints  Add loyalty points to customer
+  reason: Manages customer master records plus loyalty points and referral links — Customer Relationship
+    Management at L1, spanning customer data and loyalty so no single L2 chosen.
+- tag: Plans
+  spec_file: smartrr-plans-api-openapi.yml
+  capability_id: BC-4240.10
+  capability_id_l1: BC-4240
+  capability_name: Plan & Entitlement Design
+  confidence: 0.7
+  evidence: GET /vendor/selling-plan-group  getSellingPlanGroups; GET /vendor/selling-plan-configs  getSellingPlanConfigs  Get
+    all programs for a shop
+  reason: Selling plans and purchasables define the subscription offerings customers can buy, matching
+    Plan & Entitlement Design; some ambiguity with product/price catalogue.
