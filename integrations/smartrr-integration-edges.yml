@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/smartrr/integrations
+- https://n8n.io/integrations/smartrr/
+- https://composio.dev/toolkits/smartrr
+- https://monid.ai/tools/smartrr
+checked:
+- https://composio.dev/toolkits/smartrr
+- https://monid.ai/tools/smartrr
+- https://n8n.io/integrations/smartrr/
+- https://zapier.com/apps/smartrr/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
